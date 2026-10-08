@@ -1,0 +1,199 @@
+:root {
+  --primary-color: #e50914;
+  --primary-hover: #b80710;
+  --dark-bg: #0f1015;
+  --card-bg: #1a1c24;
+  --card-border: #2a2d39;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --seat-available: #0d6efd;
+  --seat-selected: #198754;
+  --seat-locked: #ffc107;
+  --seat-booked: #dc3545;
+}
+
+body {
+  margin: 0;
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar Enhancements */
+.navbar-custom {
+  background: rgba(15, 16, 21, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+/* Event Cards */
+.event-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5), 0 0 16px rgba(229, 9, 20, 0.2);
+  border-color: #3b3f4f;
+}
+
+.event-poster {
+  height: 360px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.event-card:hover .event-poster {
+  transform: scale(1.03);
+}
+
+/* Cinema Screen */
+.cinema-screen-container {
+  perspective: 600px;
+  margin-bottom: 40px;
+}
+
+.cinema-screen {
+  height: 14px;
+  width: 70%;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.2));
+  border-radius: 50%;
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.7);
+  transform: rotateX(-30deg);
+}
+
+.screen-text {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #888;
+  margin-top: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Seat Buttons */
+.seat-btn {
+  width: 44px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  cursor: pointer;
+}
+
+.seat-btn:hover:not(:disabled) {
+  transform: scale(1.15);
+  z-index: 5;
+}
+
+.seat-btn.seat-available {
+  background-color: var(--seat-available);
+  box-shadow: 0 2px 6px rgba(13, 110, 253, 0.3);
+}
+
+.seat-btn.seat-available:hover {
+  background-color: #0b5ed7;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.5);
+}
+
+.seat-btn.seat-selected {
+  background-color: var(--seat-selected);
+  box-shadow: 0 0 12px rgba(25, 135, 84, 0.8);
+  transform: scale(1.1);
+}
+
+.seat-btn.seat-locked {
+  background-color: var(--seat-locked);
+  color: #111;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+  cursor: not-allowed;
+  animation: pulse-lock 1.5s infinite;
+}
+
+.seat-btn.seat-booked {
+  background-color: #343a40;
+  color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@keyframes pulse-lock {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+/* Lock Timer Bar */
+.lock-timer-box {
+  background: #252834;
+  border-left: 4px solid #ffc107;
+  border-radius: 8px;
+  padding: 12px 18px;
+}
+
+/* Badges */
+.badge-category {
+  background: rgba(229, 9, 20, 0.15);
+  color: #ff5e67;
+  border: 1px solid rgba(229, 9, 20, 0.4);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.badge-vip {
+  background: linear-gradient(135deg, #f5af19, #e65c00);
+  color: white;
+}
+
+.badge-premium {
+  background: linear-gradient(135deg, #8a2387, #e94057);
+  color: white;
+}
+
+.badge-regular {
+  background: linear-gradient(135deg, #0052d4, #4364f7);
+  color: white;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111217;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b2e3c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3e4256;
+}
